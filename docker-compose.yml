@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+    home:
+        build: ./page_home_go
+        ports:
+            - "8080"
+    cv:
+        build: ./page_cv_python
+        ports:
+            - "8000"
+    nginx:
+        build: ./nginx
+        links:
+            - cv:cv
+            - home:home
+        ports:
+            - "80:80"
